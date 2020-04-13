@@ -14,14 +14,11 @@
 
 int main(void) {
 	DDRA = 0x00; PORTA = 0xFF; // Configure port A's 8 pins as inputs
-	DDRB = 0x00; PORTB = 0xFF; // Configure port B's 8 pins as inputs
+	DDRB = 0xFF; PORTB = 0x00; // Configure port B's 8 pins as outputs
 	DDRC = 0xFF; PORTC = 0x00; // Configure port C's 8 pins as outputs
-    	while (1) {
-		PORTC = ((PINA & 0x80) >> 7) + ((PINA & 0x40) >> 6) + ((PINA & 0x20) >> 5) +
-			 ((PINA & 0x10) >> 4) + ((PINA & 0x08) >> 3) + ((PINA & 0x04) >> 2) +
-			 ((PINA & 0x02) >> 1) + (PINA & 0x01) + ((PINB & 0x80) >> 7) +
-			 ((PINB & 0x40) >> 6) + ((PINB & 0x20) >> 5) + ((PINB & 0x10) >> 4) +
-			 ((PINB & 0x08) >> 3) + ((PINB & 0x04) >> 2) + ((PINB & 0x02) >> 1) + (PINB & 0x01); 
+	while (1) {
+		PORTB = ((PINA & 0xF0) >> 4);
+		PORTC = ((PINA & 0x0F) << 4);
 	}
 	return 0;
 }

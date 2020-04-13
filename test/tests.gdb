@@ -26,100 +26,39 @@
 echo ======================================================\n
 echo Running all tests..."\n\n
 
-test "PINA: 0x00 => PORTB: 0x40"
-setPINA 0x00
-continue 5
-expectPORTC 0x40
-checkResult
-
-test "PINA: 0x01 => PORTB: 0x60"
+test "PINA: 0x01 => PORTB: 0x00, PORTC: 0x10"
 setPINA 0x01
 continue 5
-expectPORTC 0x60
+expectPORTB 0x00
+expectPORTC 0x10
 checkResult
 
-test "PINA: 0x02 => PORTB: 0x60"
-setPINA 0x02
+test "PINA: 0x10 => PORTB: 0x01, PORTC: 0x00"
+setPINA 0x10
 continue 5
-expectPORTC 0x60
+expectPORTB 0x01
+expectPORTC 0x00
 checkResult
 
-test "PINA: 0x03 => PORTB: 0x70"
-setPINA 0x03
+test "PINA: 0xFF => PORTB: 0x0F, PORTC: 0xF0"
+setPINA 0xFF
 continue 5
-expectPORTC 0x70
+expectPORTB 0x0F
+expectPORTC 0xF0
 checkResult
 
-test "PINA: 0x04 => PORTB: 0x70"
-setPINA 0x04
+test "PINA: 0xAD => PORTB: 0x0A, PORTC: 0xD0"
+setPINA 0xAD
 continue 5
-expectPORTC 0x70
+expectPORTB 0x0A
+expectPORTC 0xD0
 checkResult
 
-test "PINA: 0x05 => PORTB: 0x38"
-setPINA 0x05
+test "PINA: 0x3C => PORTB: 0x03, PORTC: 0xC0"
+setPINA 0x3C
 continue 5
-expectPORTC 0x38
-checkResult
-
-test "PINA: 0x06 => PORTB: 0x38"
-setPINA 0x06
-continue 5
-expectPORTC 0x38
-checkResult
-
-test "PINA: 0x07 => PORTB: 0x3C"
-setPINA 0x07
-continue 5
-expectPORTC 0x3C
-checkResult
-
-test "PINA: 0x08 => PORTB: 0x3C"
-setPINA 0x08
-continue 5
-expectPORTC 0x3C
-checkResult
-
-test "PINA: 0x09 => PORTB: 0x3C"
-setPINA 0x09
-continue 5
-expectPORTC 0x3C
-checkResult
-
-test "PINA: 0x0A => PORTB: 0x3E"
-setPINA 0x0A
-continue 5
-expectPORTC 0x3E
-checkResult
-
-test "PINA: 0x0B => PORTB: 0x3E"
-setPINA 0x0B
-continue 5
-expectPORTC 0x3E
-checkResult
-
-test "PINA: 0x0C => PORTB: 0x3E"
-setPINA 0x0C
-continue 5
-expectPORTC 0x3E
-checkResult
-
-test "PINA: 0x0D => PORTB: 0x3F"
-setPINA 0x0D
-continue 5
-expectPORTC 0x3F
-checkResult
-
-test "PINA: 0x0E => PORTB: 0x3F"
-setPINA 0x0E
-continue 5
-expectPORTC 0x3F
-checkResult
-
-test "PINA: 0x0F => PORTB: 0x3F"
-setPINA 0x0F
-continue 5
-expectPORTC 0x3F
+expectPORTB 0x03
+expectPORTC 0xC0
 checkResult
 
 # Report on how many tests passed/tests ran
