@@ -13,12 +13,20 @@
 #endif
 
 int main(void) {
-	DDRA = 0x00; PORTA = 0xFF; // Configure port A's 8 pins as inputs
-	DDRB = 0xFF; PORTB = 0x00; // Configure port B's 8 pins as outputs
-	DDRC = 0xFF; PORTC = 0x00; // Configure port C's 8 pins as outputs
+	DDRD = 0x00; PORTD = 0xFF; // Configure port D's 8 pins as inputs
+	DDRB = 0xFE; PORTB = 0x00; // Configure port B's 8 pins as outputs
+	unsigned char temp = 0x00; // temp variable that holds temp
 	while (1) {
-		PORTB = ((PINA & 0xF0) >> 4);
-		PORTC = ((PINA & 0x0F) << 4);
+		temp = ((PIND & 0xFF) << 1) + (PINB & 0x01);
+		if(temp >= 0x46){
+			PORTB = 0x02;
+		}
+		else if((temp > 0x05) && (temp < 0x46)){
+			PORTB = 0x04;
+		}
+		else{
+			PORTB = 0x00;
+		}
 	}
 	return 0;
 }
